@@ -1,0 +1,174 @@
+/* Aviasales UI - Tailwind CSS Extensions */
+
+@layer components {
+  /* Price tier colors for calendar */
+  .price-tier-green {
+    @apply bg-green-100 text-green-900;
+  }
+
+  .price-tier-amber {
+    @apply bg-amber-100 text-amber-900;
+  }
+
+  .price-tier-red {
+    @apply bg-red-100 text-red-900;
+  }
+
+  /* Skeleton loading animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-pulse {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #e0e0e0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 1000px 100%;
+  }
+
+  /* Price card hover effect */
+  .price-card {
+    @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+  }
+
+  /* Calendar cell */
+  .calendar-cell {
+    @apply rounded-lg p-2 text-center transition flex flex-col items-center justify-center;
+  }
+
+  .calendar-cell-unavailable {
+    @apply bg-gray-50 text-gray-300 cursor-default;
+  }
+
+  .calendar-cell-available {
+    @apply cursor-pointer hover:shadow-md;
+  }
+
+  /* Form inputs */
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition;
+  }
+
+  .form-input:disabled {
+    @apply bg-gray-100 cursor-not-allowed;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-900 font-semibold py-2 px-4 rounded-md hover:bg-gray-300 transition;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-block px-2 py-1 text-xs font-medium rounded;
+  }
+
+  .badge-blue {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .badge-green {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .badge-red {
+    @apply bg-red-100 text-red-800;
+  }
+
+  /* Alerts */
+  .alert {
+    @apply rounded-lg p-4 border;
+  }
+
+  .alert-error {
+    @apply bg-red-50 border-red-200 text-red-900;
+  }
+
+  .alert-warning {
+    @apply bg-amber-50 border-amber-200 text-amber-900;
+  }
+
+  .alert-info {
+    @apply bg-blue-50 border-blue-200 text-blue-900;
+  }
+
+  .alert-success {
+    @apply bg-green-50 border-green-200 text-green-900;
+  }
+
+  /* Modal overlay */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-lg shadow-xl max-w-md w-full mx-4;
+  }
+
+  /* Dropdown menu */
+  .dropdown-menu {
+    @apply absolute z-10 bg-white border border-gray-200 rounded-md shadow-lg;
+  }
+
+  .dropdown-item {
+    @apply w-full text-left px-3 py-2 hover:bg-blue-100 focus:bg-blue-100 transition;
+  }
+
+  /* Loading spinner */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  /* Accessibility improvements */
+  .sr-only {
+    @apply absolute w-1 h-1 p-0 -m-1 overflow-hidden clip border-0;
+  }
+
+  /* Focus visible for keyboard navigation */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+}
+
+/* Responsive breakpoints override */
+@screen md {
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@screen lg {
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+
+  .price-card {
+    @apply page-break-inside-avoid;
+  }
+}
